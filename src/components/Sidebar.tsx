@@ -60,7 +60,7 @@ export default function Sidebar({ lang, setLang, isMenuOpen, setIsMenuOpen }: Si
           <div className="mt-6 space-y-6 flex-1 overflow-visible">
             <section>
               <h2 className="text-[9px] font-bold text-gray-500 uppercase tracking-[0.2em] mb-2 flex items-center gap-2">
-                <GraduationCap size={10} fill="currentColor" /> {lang === 'pt' ? 'Formação' : 'Education'}
+                <GraduationCap size={10} fill="currentColor" /> {t.common.education}
               </h2>
               <ul className="space-y-3">
                 {t.education.map((edu, i) => (
@@ -73,7 +73,7 @@ export default function Sidebar({ lang, setLang, isMenuOpen, setIsMenuOpen }: Si
 
             <section>
               <h2 className="text-[9px] font-bold text-gray-500 uppercase tracking-[0.2em] mb-2 flex items-center gap-2">
-                <Phone size={10} fill="currentColor" /> {lang === 'pt' ? 'Contato' : 'Contact'}
+                <Phone size={10} fill="currentColor" /> {t.common.contact}
               </h2>
               <ul className="space-y-1.5">
                 <li>

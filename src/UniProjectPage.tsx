@@ -20,12 +20,40 @@ import {
 } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
-import { Lang } from './data';
+import { DATA, Lang } from './data';
 
 export default function UniProjectPage() {
   const { id } = useParams();
-  const [lang, setLang] = useState<Lang>('pt');
+  const [lang, setLang] = useState<Lang>(() => {
+    const saved = localStorage.getItem('portfolio_lang');
+    return (saved as Lang) || 'pt';
+  });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const t = DATA[lang];
+
+  useEffect(() => {
+    localStorage.setItem('portfolio_lang', lang);
+  }, [lang]);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Scroll to top on mount
   useEffect(() => {
@@ -38,7 +66,7 @@ export default function UniProjectPage() {
       <div className="bg-glow top-[-10%] left-[-10%] bg-[radial-gradient(circle,_rgba(59,130,246,0.8)_0%,_rgba(59,130,246,0.1)_70%,_transparent_100%)] opacity-[0.2]" />
 
       {/* --- Mobile Header --- */}
-      <div className="lg:hidden fixed top-0 left-0 right-0 p-6 flex justify-between items-center z-[60] bg-brand-bg/80 backdrop-blur-xl border-b border-white/5">
+      <div className={`lg:hidden fixed top-0 left-0 right-0 p-6 flex justify-between items-center z-[60] transition-all duration-300 ${scrolled ? 'bg-brand-bg/90 backdrop-blur-xl border-b border-white/5' : 'bg-transparent border-b border-transparent'}`}>
         <button 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="p-2 text-white bg-white/5 rounded-xl border border-white/10"
@@ -72,7 +100,7 @@ export default function UniProjectPage() {
             <div className="p-2 rounded-xl bg-white/5 border border-white/10 group-hover:bg-white/10 transition-all">
               <ArrowLeft size={18} />
             </div>
-            <span className="text-sm font-medium">Voltar ao Portfólio</span>
+            <span className="text-sm font-medium">{t.common.back}</span>
           </Link>
           <a 
             href="https://static.even3.com/anais/46800.pdf?v=639118136998100583" 
@@ -80,7 +108,7 @@ export default function UniProjectPage() {
             rel="noopener noreferrer"
             className="w-full sm:w-auto px-6 py-3 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 text-sm font-bold hover:bg-blue-500/20 transition-all flex items-center justify-center gap-2"
           >
-            Ver Artigo <ExternalLink size={16} />
+            {t.common.viewArticle} <ExternalLink size={16} />
           </a>
         </nav>
 
@@ -120,20 +148,20 @@ export default function UniProjectPage() {
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 py-8 border-y border-white/5">
             <div>
-              <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Ano</p>
+              <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">{t.common.year}</p>
               <p className="text-white font-medium">2022</p>
             </div>
             <div>
-              <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Função</p>
+              <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">{t.common.role}</p>
               <p className="text-white font-medium">UX/UI Designer</p>
             </div>
             <div>
-              <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Contexto</p>
-              <p className="text-white font-medium">Graduação / Artigo</p>
+              <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">{t.common.context}</p>
+              <p className="text-white font-medium">{lang === 'pt' ? 'Graduação / Artigo' : 'Graduation / Article'}</p>
             </div>
             <div>
-              <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Foco</p>
-              <p className="text-white font-medium">Design Emocional</p>
+              <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">{t.common.focus}</p>
+              <p className="text-white font-medium">{lang === 'pt' ? 'Design Emocional' : 'Emotional Design'}</p>
             </div>
           </div>
         </header>
@@ -141,26 +169,35 @@ export default function UniProjectPage() {
         {/* --- Overview --- */}
         <section className="grid lg:grid-cols-3 gap-12">
           <div className="lg:col-span-2 space-y-6">
-            <h2 className="text-3xl font-bold text-white">Visão Geral</h2>
+            <h2 className="text-3xl font-bold text-white">{t.common.overview}</h2>
             <p className="text-gray-400 leading-relaxed text-lg">
-              Um dispositivo digital que auxilia adolescentes com TDM (Transtorno Depressivo Maior), aliado ao conceito do design emocional, busca estimular o usuário na prática de atividades cognitivas e interações sociais. Foi desenvolvido durante meu curso de graduação onde resultou na produção de um artigo.
+              {lang === 'pt' 
+                ? 'Um dispositivo digital que auxilia adolescentes com TDM (Transtorno Depressivo Maior), aliado ao conceito do design emocional, busca estimular o usuário na prática de atividades cognitivas e interações sociais. Foi desenvolvido durante meu curso de graduação onde resultou na produção de um artigo.'
+                : 'A digital device that assists teenagers with MDD (Major Depressive Disorder), combined with the concept of emotional design, seeks to stimulate the user in the practice of cognitive activities and social interactions. It was developed during my undergraduate course where it resulted in the production of an article.'}
             </p>
             <div className="space-y-4 pt-4">
-              <h3 className="text-xl font-bold text-white">Introdução</h3>
+              <h3 className="text-xl font-bold text-white">{lang === 'pt' ? 'Introdução' : 'Introduction'}</h3>
               <p className="text-gray-400 leading-relaxed">
-                Dos casos de depressão na sociedade, aqueles ocorridos no período da adolescência mostram-se mais frequentes devido às alterações biológicas, psicológicas e sociais aos quais os adolescentes estão submetidos. Este projeto delimita-se ao estudo em que se propõe o desenvolvimento de dispositivo digital que amenize os efeitos do TDM de grau leve em adolescentes, buscando-se a reinserção social e prevenção do agravamento da doença através do uso de princípios de Interação Homem Computador e Ergonomia Afetiva.
+                {lang === 'pt'
+                  ? 'Dos casos de depressão na sociedade, aqueles ocorridos no período da adolescência mostram-se mais frequentes devido às alterações biológicas, psicológicas e sociais aos quais os adolescentes estão submetidos. Este projeto delimita-se ao estudo em que se propõe o desenvolvimento de dispositivo digital que amenize os efeitos do TDM de grau leve em adolescentes, buscando-se a reinserção social e prevenção do agravamento da doença através do uso de princípios de Interação Homem Computador e Ergonomia Afetiva.'
+                  : 'Of the cases of depression in society, those occurring in adolescence are more frequent due to the biological, psychological, and social changes to which adolescents are subjected. This project is limited to the study in which the development of a digital device that mitigates the effects of mild MDD in adolescents is proposed, seeking social reintegration and prevention of the worsening of the disease through the use of Human-Computer Interaction principles and Affective Ergonomics.'}
               </p>
             </div>
           </div>
           <div className="space-y-6">
-            <h3 className="text-xl font-bold text-white">Objetivos</h3>
+            <h3 className="text-xl font-bold text-white">{t.common.objectives}</h3>
             <ul className="space-y-4">
-              {[
+              {(lang === 'pt' ? [
                 "Amenizar os efeitos do TDM",
                 "Promover as relações sociais",
                 "Prevenir o agravamento",
                 "Aplicar a Hedonomia"
-              ].map((obj, i) => (
+              ] : [
+                "Mitigate the effects of MDD",
+                "Promote social relations",
+                "Prevent worsening",
+                "Apply Hedonomy"
+              ]).map((obj, i) => (
                 <li key={i} className="flex gap-3 text-gray-400 text-sm">
                   <div className="mt-1 shrink-0"><CheckCircle2 size={16} className="text-blue-400" /></div>
                   {obj}
@@ -173,14 +210,14 @@ export default function UniProjectPage() {
         {/* --- Methodology --- */}
         <section className="space-y-12">
           <div className="text-center space-y-4">
-            <h2 className="text-3xl font-bold text-white">Método Utilizado</h2>
-            <p className="text-gray-400">Processo estruturado em três pilares fundamentais.</p>
+            <h2 className="text-3xl font-bold text-white">{lang === 'pt' ? 'Método Utilizado' : 'Method Used'}</h2>
+            <p className="text-gray-400">{lang === 'pt' ? 'Processo estruturado em três pilares fundamentais.' : 'Process structured in three fundamental pillars.'}</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { title: 'Imersão', icon: <Search size={24} />, color: 'blue' },
-              { title: 'Ideação', icon: <Lightbulb size={24} />, color: 'purple' },
-              { title: 'Prototipação', icon: <Layout size={24} />, color: 'emerald' },
+              { title: lang === 'pt' ? 'Imersão' : 'Immersion', icon: <Search size={24} />, color: 'blue' },
+              { title: lang === 'pt' ? 'Ideação' : 'Ideation', icon: <Lightbulb size={24} />, color: 'purple' },
+              { title: lang === 'pt' ? 'Prototipação' : 'Prototyping', icon: <Layout size={24} />, color: 'emerald' },
             ].map((item, i) => (
               <div key={i} className="organic-card p-8 text-center space-y-4">
                 <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-white mx-auto border border-white/10">
@@ -200,7 +237,7 @@ export default function UniProjectPage() {
             <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-blue-400 border border-white/10">
               <Search size={24} />
             </div>
-            <h2 className="text-3xl font-bold text-white">Imersão</h2>
+            <h2 className="text-3xl font-bold text-white">{lang === 'pt' ? 'Imersão' : 'Immersion'}</h2>
           </div>
           
           <div className="organic-card p-8 space-y-8">
@@ -392,16 +429,16 @@ export default function UniProjectPage() {
 
         {/* --- Footer CTA --- */}
         <footer className="py-24 text-center space-y-8 border-t border-white/5">
-          <h2 className="text-3xl lg:text-5xl font-bold text-white tracking-tight">Gostou deste projeto?</h2>
+          <h2 className="text-3xl lg:text-5xl font-bold text-white tracking-tight">{t.common.ctaTitle}</h2>
           <p className="text-gray-400 max-w-lg mx-auto">
-            Estou disponível para novos desafios e colaborações em produtos digitais.
+            {t.common.ctaText}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button className="w-full sm:w-auto px-8 py-4 bg-white text-black rounded-full font-bold hover:scale-105 transition-all">
-              Vamos Conversar
+              {t.common.ctaButton}
             </button>
             <Link to="/" className="w-full sm:w-auto px-8 py-4 bg-white/5 border border-white/10 text-white rounded-full font-bold hover:bg-white/10 transition-all">
-              Ver outros projetos
+              {t.common.otherProjects}
             </Link>
           </div>
         </footer>

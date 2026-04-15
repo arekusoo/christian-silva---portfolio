@@ -26,12 +26,40 @@ import {
 } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
-import { Lang } from './data';
+import { DATA, Lang } from './data';
 
 export default function AmorDeBichoProjectPage() {
   const { id } = useParams();
-  const [lang, setLang] = useState<Lang>('pt');
+  const [lang, setLang] = useState<Lang>(() => {
+    const saved = localStorage.getItem('portfolio_lang');
+    return (saved as Lang) || 'pt';
+  });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const t = DATA[lang];
+
+  useEffect(() => {
+    localStorage.setItem('portfolio_lang', lang);
+  }, [lang]);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Scroll to top on mount
   useEffect(() => {
@@ -44,7 +72,7 @@ export default function AmorDeBichoProjectPage() {
       <div className="bg-glow top-[-10%] left-[-10%] bg-[radial-gradient(circle,_rgba(240,98,146,0.8)_0%,_rgba(240,98,146,0.1)_70%,_transparent_100%)] opacity-[0.2]" />
 
       {/* --- Mobile Header --- */}
-      <div className="lg:hidden fixed top-0 left-0 right-0 p-6 flex justify-between items-center z-[60] bg-brand-bg/80 backdrop-blur-xl border-b border-white/5">
+      <div className={`lg:hidden fixed top-0 left-0 right-0 p-6 flex justify-between items-center z-[60] transition-all duration-300 ${scrolled ? 'bg-brand-bg/90 backdrop-blur-xl border-b border-white/5' : 'bg-transparent border-b border-transparent'}`}>
         <button 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="p-2 text-white bg-white/5 rounded-xl border border-white/10"
@@ -78,7 +106,7 @@ export default function AmorDeBichoProjectPage() {
             <div className="p-2 rounded-xl bg-white/5 border border-white/10 group-hover:bg-white/10 transition-all">
               <ArrowLeft size={18} />
             </div>
-            <span className="text-sm font-medium">Voltar ao Portfólio</span>
+            <span className="text-sm font-medium">{t.common.back}</span>
           </Link>
           <a 
             href="https://www.figma.com/proto/Zi1HcOUoauhZzPVxEFamRd/Desafio-EBAC?page-id=0%3A1&node-id=46-1682&viewport=-6490%2C-3219%2C0.44&scaling=min-zoom&starting-point-node-id=46%3A1682" 
@@ -86,7 +114,7 @@ export default function AmorDeBichoProjectPage() {
             rel="noopener noreferrer"
             className="w-full sm:w-auto px-6 py-3 bg-pink-500/10 border border-pink-500/20 rounded-full text-pink-400 text-sm font-bold hover:bg-pink-500/20 transition-all flex items-center justify-center gap-2"
           >
-            Ver Protótipo <ExternalLink size={16} />
+            {t.common.viewPrototype} <ExternalLink size={16} />
           </a>
         </nav>
 
@@ -126,20 +154,20 @@ export default function AmorDeBichoProjectPage() {
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 py-8 border-y border-white/5">
             <div>
-              <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Tipo</p>
+              <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">{t.common.type}</p>
               <p className="text-white font-medium">Web App</p>
             </div>
             <div>
-              <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Função</p>
+              <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">{t.common.role}</p>
               <p className="text-white font-medium">UX/UI Designer</p>
             </div>
             <div>
-              <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Duração</p>
-              <p className="text-white font-medium">Desafio (Short term)</p>
+              <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">{t.common.duration}</p>
+              <p className="text-white font-medium">{lang === 'pt' ? 'Desafio (Curto prazo)' : 'Challenge (Short term)'}</p>
             </div>
             <div>
-              <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Foco</p>
-              <p className="text-white font-medium">Adoção Responsável</p>
+              <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">{t.common.focus}</p>
+              <p className="text-white font-medium">{lang === 'pt' ? 'Adoção Responsável' : 'Responsible Adoption'}</p>
             </div>
           </div>
         </header>
@@ -147,20 +175,27 @@ export default function AmorDeBichoProjectPage() {
         {/* --- Overview --- */}
         <section className="grid lg:grid-cols-3 gap-12">
           <div className="lg:col-span-2 space-y-6">
-            <h2 className="text-3xl font-bold text-white">Visão Geral</h2>
+            <h2 className="text-3xl font-bold text-white">{t.common.overview}</h2>
             <p className="text-gray-400 leading-relaxed text-lg">
-              Este projeto trata-se de produto digital que serve como central para ONG's de adoção de animais, possibilitando que haja anúncios, acompanhamento veterinário e dashboard de dados para ONG's. Foi desenvolvido como forma de estudo através de uma página de desafios para designers com foco em UX e UI.
+              {lang === 'pt' 
+                ? "Este projeto trata-se de produto digital que serve como central para ONG's de adoção de animais, possibilitando que haja anúncios, acompanhamento veterinário e dashboard de dados para ONG's. Foi desenvolvido como forma de estudo através de uma página de desafios para designers com foco em UX e UI."
+                : "This project is a digital product that serves as a center for animal adoption NGOs, enabling advertisements, veterinary monitoring, and a data dashboard for NGOs. It was developed as a study through a challenge page for designers focusing on UX and UI."}
             </p>
           </div>
           <div className="space-y-6">
-            <h3 className="text-xl font-bold text-white">Objetivos</h3>
+            <h3 className="text-xl font-bold text-white">{t.common.objectives}</h3>
             <ul className="space-y-4">
-              {[
+              {(lang === 'pt' ? [
                 "Aumentar a taxa de adoção das ONGs",
                 "Tornar o processo de adoção mais rápido",
                 "Relatório de saúde atualizado",
                 "Dar mais visibilidade às ONGs"
-              ].map((obj, i) => (
+              ] : [
+                "Increase NGO adoption rates",
+                "Make the adoption process faster",
+                "Updated health report",
+                "Give more visibility to NGOs"
+              ]).map((obj, i) => (
                 <li key={i} className="flex gap-3 text-gray-400 text-sm">
                   <div className="mt-1 shrink-0"><CheckCircle2 size={16} className="text-pink-400" /></div>
                   {obj}
@@ -173,16 +208,16 @@ export default function AmorDeBichoProjectPage() {
         {/* --- Methodology --- */}
         <section className="space-y-12">
           <div className="text-center space-y-4">
-            <h2 className="text-3xl font-bold text-white">Processo de Design</h2>
-            <p className="text-gray-400">Cinco etapas fundamentais para a construção da solução.</p>
+            <h2 className="text-3xl font-bold text-white">{lang === 'pt' ? 'Processo de Design' : 'Design Process'}</h2>
+            <p className="text-gray-400">{lang === 'pt' ? 'Cinco etapas fundamentais para a construção da solução.' : 'Five fundamental steps for building the solution.'}</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {[
-              { title: 'Entender', icon: <Search size={20} /> },
-              { title: 'Analisar', icon: <BarChart3 size={20} /> },
-              { title: 'Criar', icon: <Lightbulb size={20} /> },
-              { title: 'Prototipar', icon: <Layout size={20} /> },
-              { title: 'Validar', icon: <ClipboardCheck size={20} /> },
+              { title: lang === 'pt' ? 'Entender' : 'Understand', icon: <Search size={20} /> },
+              { title: lang === 'pt' ? 'Analisar' : 'Analyze', icon: <BarChart3 size={20} /> },
+              { title: lang === 'pt' ? 'Criar' : 'Create', icon: <Lightbulb size={20} /> },
+              { title: lang === 'pt' ? 'Prototipar' : 'Prototype', icon: <Layout size={20} /> },
+              { title: lang === 'pt' ? 'Validar' : 'Validate', icon: <ClipboardCheck size={20} /> },
             ].map((item, i) => (
               <div key={i} className="organic-card p-6 text-center space-y-3">
                 <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-white mx-auto border border-white/10">
@@ -202,7 +237,7 @@ export default function AmorDeBichoProjectPage() {
             <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-pink-400 border border-white/10">
               <Search size={24} />
             </div>
-            <h2 className="text-3xl font-bold text-white">Entender</h2>
+            <h2 className="text-3xl font-bold text-white">{lang === 'pt' ? 'Entender' : 'Understand'}</h2>
           </div>
           
           <div className="organic-card p-8 space-y-12">
@@ -238,7 +273,7 @@ export default function AmorDeBichoProjectPage() {
             <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-pink-400 border border-white/10">
               <BarChart3 size={24} />
             </div>
-            <h2 className="text-3xl font-bold text-white">Analisar</h2>
+            <h2 className="text-3xl font-bold text-white">{lang === 'pt' ? 'Analisar' : 'Analyze'}</h2>
           </div>
 
           <div className="organic-card p-8 space-y-12">
@@ -318,7 +353,7 @@ export default function AmorDeBichoProjectPage() {
             <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-pink-400 border border-white/10">
               <Lightbulb size={24} />
             </div>
-            <h2 className="text-3xl font-bold text-white">Criar</h2>
+            <h2 className="text-3xl font-bold text-white">{lang === 'pt' ? 'Criar' : 'Create'}</h2>
           </div>
 
           <div className="organic-card p-8 space-y-12">
@@ -424,7 +459,7 @@ export default function AmorDeBichoProjectPage() {
             <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-pink-400 border border-white/10">
               <Layout size={24} />
             </div>
-            <h2 className="text-3xl font-bold text-white">Prototipar</h2>
+            <h2 className="text-3xl font-bold text-white">{lang === 'pt' ? 'Prototipar' : 'Prototype'}</h2>
           </div>
 
           <div className="space-y-12">
@@ -455,7 +490,7 @@ export default function AmorDeBichoProjectPage() {
             <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-pink-400 border border-white/10">
               <ClipboardCheck size={24} />
             </div>
-            <h2 className="text-3xl font-bold text-white">Validar</h2>
+            <h2 className="text-3xl font-bold text-white">{lang === 'pt' ? 'Validar' : 'Validate'}</h2>
           </div>
 
           <div className="organic-card p-8 space-y-12">
@@ -507,16 +542,16 @@ export default function AmorDeBichoProjectPage() {
 
         {/* --- Footer CTA --- */}
         <footer className="py-24 text-center space-y-8 border-t border-white/5">
-          <h2 className="text-3xl lg:text-5xl font-bold text-white tracking-tight">Gostou deste projeto?</h2>
+          <h2 className="text-3xl lg:text-5xl font-bold text-white tracking-tight">{t.common.ctaTitle}</h2>
           <p className="text-gray-400 max-w-lg mx-auto">
-            Estou disponível para novos desafios e colaborações em produtos digitais.
+            {t.common.ctaText}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button className="w-full sm:w-auto px-8 py-4 bg-white text-black rounded-full font-bold hover:scale-105 transition-all">
-              Vamos Conversar
+              {t.common.ctaButton}
             </button>
             <Link to="/" className="w-full sm:w-auto px-8 py-4 bg-white/5 border border-white/10 text-white rounded-full font-bold hover:bg-white/10 transition-all">
-              Ver outros projetos
+              {t.common.otherProjects}
             </Link>
           </div>
         </footer>

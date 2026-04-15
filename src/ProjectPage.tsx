@@ -24,8 +24,36 @@ import { toast } from 'sonner';
 
 export default function ProjectPage() {
   const { id } = useParams();
-  const [lang, setLang] = useState<Lang>('pt');
+  const [lang, setLang] = useState<Lang>(() => {
+    const saved = localStorage.getItem('portfolio_lang');
+    return (saved as Lang) || 'pt';
+  });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const t = DATA[lang];
+
+  useEffect(() => {
+    localStorage.setItem('portfolio_lang', lang);
+  }, [lang]);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Scroll to top on mount
   useEffect(() => {
@@ -36,10 +64,10 @@ export default function ProjectPage() {
     return (
       <div className="min-h-screen bg-brand-bg flex items-center justify-center p-8">
         <div className="text-center space-y-6">
-          <h1 className="text-4xl font-bold text-white">Projeto em Construção</h1>
-          <p className="text-gray-400">O conteúdo detalhado para este projeto está sendo preparado.</p>
+          <h1 className="text-4xl font-bold text-white">{t.common.constructionTitle}</h1>
+          <p className="text-gray-400">{t.common.constructionText}</p>
           <Link to="/" className="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors">
-            <ArrowLeft size={20} /> Voltar ao Portfólio
+            <ArrowLeft size={20} /> {t.common.back}
           </Link>
         </div>
       </div>
@@ -52,7 +80,7 @@ export default function ProjectPage() {
       <div className="bg-glow top-[-10%] left-[-10%] bg-[radial-gradient(circle,_rgba(16,185,129,0.8)_0%,_rgba(16,185,129,0.1)_70%,_transparent_100%)] opacity-[0.25]" />
 
       {/* --- Mobile Header --- */}
-      <div className="lg:hidden fixed top-0 left-0 right-0 p-6 flex justify-between items-center z-[60] bg-brand-bg/80 backdrop-blur-xl border-b border-white/5">
+      <div className={`lg:hidden fixed top-0 left-0 right-0 p-6 flex justify-between items-center z-[60] transition-all duration-300 ${scrolled ? 'bg-brand-bg/90 backdrop-blur-xl border-b border-white/5' : 'bg-transparent border-b border-transparent'}`}>
         <button 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="p-2 text-white bg-white/5 rounded-xl border border-white/10"
@@ -86,13 +114,13 @@ export default function ProjectPage() {
             <div className="p-2 rounded-xl bg-white/5 border border-white/10 group-hover:bg-white/10 transition-all">
               <ArrowLeft size={18} />
             </div>
-            <span className="text-sm font-medium">Voltar ao Portfólio</span>
+            <span className="text-sm font-medium">{t.common.back}</span>
           </Link>
           <button 
-            onClick={() => toast.error('Este protótipo foi descontinuado pela UFAM e não está mais disponível.')}
+            onClick={() => toast.error(lang === 'pt' ? 'Este protótipo foi descontinuado pela UFAM e não está mais disponível.' : 'This prototype has been discontinued by UFAM and is no longer available.')}
             className="w-full sm:w-auto px-6 py-3 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-400 text-sm font-bold opacity-30 cursor-not-allowed transition-all flex items-center justify-center gap-2"
           >
-            Ver Protótipo <ExternalLink size={16} />
+            {t.common.viewPrototype} <ExternalLink size={16} />
           </button>
         </nav>
 
@@ -131,19 +159,19 @@ export default function ProjectPage() {
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 py-8 border-y border-white/5">
             <div>
-              <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Ano</p>
+              <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">{t.common.year}</p>
               <p className="text-white font-medium">2023</p>
             </div>
             <div>
-              <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Função</p>
+              <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">{t.common.role}</p>
               <p className="text-white font-medium">UX/UI Designer</p>
             </div>
             <div>
-              <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Cliente</p>
-              <p className="text-white font-medium">Instituição de Ensino</p>
+              <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">{t.common.client}</p>
+              <p className="text-white font-medium">{lang === 'pt' ? 'Instituição de Ensino' : 'Educational Institution'}</p>
             </div>
             <div>
-              <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Ferramentas</p>
+              <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">{t.common.tools}</p>
               <p className="text-white font-medium">Figma, MUI</p>
             </div>
           </div>
@@ -152,23 +180,23 @@ export default function ProjectPage() {
         {/* --- Overview --- */}
         <section className="grid lg:grid-cols-3 gap-12">
           <div className="lg:col-span-2 space-y-6">
-            <h2 className="text-3xl font-bold text-white">Visão Geral</h2>
+            <h2 className="text-3xl font-bold text-white">{t.common.overview}</h2>
             <p className="text-gray-400 leading-relaxed text-lg">
-              Este projeto define-se por um sistema de monitoria para alunos, monitores, coordenadores e professores. 
-              O objetivo é oferecer uma plataforma online para facilitar a comunicação e o acompanhamento das atividades 
-              de monitoria em uma instituição de ensino. Participei como Designer de UI e UX, além de definir conceitos de branding.
+              {lang === 'pt' 
+                ? 'Este projeto define-se por um sistema de monitoria para alunos, monitores, coordenadores e professores. O objetivo é oferecer uma plataforma online para facilitar a comunicação e o acompanhamento das atividades de monitoria em uma instituição de ensino. Participei como Designer de UI e UX, além de definir conceitos de branding.'
+                : 'This project is defined by a tutoring system for students, tutors, coordinators, and teachers. The goal is to offer an online platform to facilitate communication and monitoring of tutoring activities in an educational institution. I participated as a UI and UX Designer, in addition to defining branding concepts.'}
             </p>
           </div>
           <div className="space-y-6">
-            <h3 className="text-xl font-bold text-white">Objetivos</h3>
+            <h3 className="text-xl font-bold text-white">{t.common.objectives}</h3>
             <ul className="space-y-4">
               <li className="flex gap-3 text-gray-400 text-sm">
                 <div className="mt-1 shrink-0"><CheckCircle2 size={16} className="text-emerald-400" /></div>
-                Conhecer os papéis envolvidos e as necessidades de cada um.
+                {lang === 'pt' ? 'Conhecer os papéis envolvidos e as necessidades de cada um.' : 'Understand the roles involved and the needs of each one.'}
               </li>
               <li className="flex gap-3 text-gray-400 text-sm">
                 <div className="mt-1 shrink-0"><CheckCircle2 size={16} className="text-emerald-400" /></div>
-                Desenvolver um sistema digital que auxilie os papéis de acordo com suas necessidades.
+                {lang === 'pt' ? 'Desenvolver um sistema digital que auxilie os papéis de acordo com suas necessidades.' : 'Develop a digital system that assists roles according to their needs.'}
               </li>
             </ul>
           </div>
@@ -177,16 +205,16 @@ export default function ProjectPage() {
         {/* --- Methodology --- */}
         <section className="space-y-12">
           <div className="text-center space-y-4">
-            <h2 className="text-3xl font-bold text-white">Metodologia</h2>
-            <p className="text-gray-400">Utilizamos um processo de 5 etapas para garantir a melhor experiência.</p>
+            <h2 className="text-3xl font-bold text-white">{lang === 'pt' ? 'Metodologia' : 'Methodology'}</h2>
+            <p className="text-gray-400">{lang === 'pt' ? 'Utilizamos um processo de 5 etapas para garantir a melhor experiência.' : 'We use a 5-step process to ensure the best experience.'}</p>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
             {[
-              { title: 'Entender', icon: <Search size={24} /> },
-              { title: 'Analisar', icon: <Users size={24} /> },
-              { title: 'Criar', icon: <Palette size={24} /> },
-              { title: 'Prototipar', icon: <Layout size={24} /> },
-              { title: 'Validar', icon: <Zap size={24} /> },
+              { title: lang === 'pt' ? 'Entender' : 'Understand', icon: <Search size={24} /> },
+              { title: lang === 'pt' ? 'Analisar' : 'Analyze', icon: <Users size={24} /> },
+              { title: lang === 'pt' ? 'Criar' : 'Create', icon: <Palette size={24} /> },
+              { title: lang === 'pt' ? 'Prototipar' : 'Prototype', icon: <Layout size={24} /> },
+              { title: lang === 'pt' ? 'Validar' : 'Validate', icon: <Zap size={24} /> },
             ].map((item, i) => (
               <div key={i} className="organic-card p-6 text-center space-y-4">
                 <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mx-auto">
@@ -206,7 +234,7 @@ export default function ProjectPage() {
             <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-emerald-400 border border-white/10">
               <Search size={24} />
             </div>
-            <h2 className="text-3xl font-bold text-white">Entender</h2>
+            <h2 className="text-3xl font-bold text-white">{lang === 'pt' ? 'Entender' : 'Understand'}</h2>
           </div>
           <div className="organic-card p-8 space-y-6">
             <p className="text-gray-400 leading-relaxed">
@@ -235,7 +263,7 @@ export default function ProjectPage() {
             <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-emerald-400 border border-white/10">
               <Users size={24} />
             </div>
-            <h2 className="text-3xl font-bold text-white">Analisar</h2>
+            <h2 className="text-3xl font-bold text-white">{lang === 'pt' ? 'Analisar' : 'Analyze'}</h2>
           </div>
           
           <div className="space-y-8">
@@ -584,16 +612,16 @@ export default function ProjectPage() {
 
         {/* --- Footer CTA --- */}
         <footer className="py-24 text-center space-y-8 border-t border-white/5">
-          <h2 className="text-3xl lg:text-5xl font-bold text-white tracking-tight">Gostou deste projeto?</h2>
+          <h2 className="text-3xl lg:text-5xl font-bold text-white tracking-tight">{t.common.ctaTitle}</h2>
           <p className="text-gray-400 max-w-lg mx-auto">
-            Estou disponível para novos desafios e colaborações em produtos digitais.
+            {t.common.ctaText}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button className="w-full sm:w-auto px-8 py-4 bg-white text-black rounded-full font-bold hover:scale-105 transition-all">
-              Vamos Conversar
+              {t.common.ctaButton}
             </button>
             <Link to="/" className="w-full sm:w-auto px-8 py-4 bg-white/5 border border-white/10 text-white rounded-full font-bold hover:bg-white/10 transition-all">
-              Ver outros projetos
+              {t.common.otherProjects}
             </Link>
           </div>
         </footer>

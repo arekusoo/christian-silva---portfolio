@@ -71,11 +71,29 @@ const ScrollToTop = () => {
 };
 
 function Home() {
-  const [lang, setLang] = useState<Lang>('pt');
+  const [lang, setLang] = useState<Lang>(() => {
+    const saved = localStorage.getItem('portfolio_lang');
+    return (saved as Lang) || 'pt';
+  });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
   const t = DATA[lang];
+
+  useEffect(() => {
+    localStorage.setItem('portfolio_lang', lang);
+  }, [lang]);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMenuOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -161,7 +179,7 @@ function Home() {
 
         {/* Skills Chips */}
         <section id="skills">
-          <h2 className="section-title">{lang === 'pt' ? 'Habilidades' : 'Skills'}</h2>
+          <h2 className="section-title">{t.common.skills}</h2>
           <div className="flex flex-wrap gap-3">
             {t.skills.map((skill, i) => (
               <motion.span 
@@ -180,7 +198,7 @@ function Home() {
 
         {/* Experience */}
         <section id="experience">
-          <h2 className="section-title">{lang === 'pt' ? 'Experiência' : 'Experience'}</h2>
+          <h2 className="section-title">{t.common.experience}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {t.experience.map((exp, i) => (
               <motion.div 
@@ -216,7 +234,7 @@ function Home() {
         {/* Projects */}
         <section id="projects">
           <div className="mb-12">
-            <h2 className="text-4xl font-bold text-white tracking-tight">{lang === 'pt' ? 'Projetos' : 'Projects'}</h2>
+            <h2 className="text-4xl font-bold text-white tracking-tight">{t.common.projects}</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -267,7 +285,7 @@ function Home() {
         {/* Footer */}
         <footer className="pt-20 pb-10 border-t border-white/5 text-center">
           <p className="text-gray-500 text-sm font-medium flex items-center justify-center gap-2">
-            {lang === 'pt' ? 'Feito com ❤️ e ' : 'Made with ❤️ and '}
+            {t.common.madeWith}
             <Bot size={16} className="text-emerald-500" />
           </p>
         </footer>

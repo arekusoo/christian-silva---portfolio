@@ -65,7 +65,34 @@ export const DATA = {
       "Design Systems escaláveis",
       "Visão estratégica de produto"
     ],
-    footer: "Feito com ❤️ e ☕"
+    footer: "Feito com ❤️ e ☕",
+    common: {
+      back: "Voltar ao Portfólio",
+      viewPrototype: "Ver Protótipo",
+      viewArticle: "Ver Artigo",
+      overview: "Visão Geral",
+      objectives: "Objetivos",
+      year: "Ano",
+      role: "Função",
+      client: "Cliente",
+      tools: "Ferramentas",
+      context: "Contexto",
+      focus: "Foco",
+      duration: "Duração",
+      type: "Tipo",
+      ctaTitle: "Gostou deste projeto?",
+      ctaText: "Estou disponível para novos desafios e colaborações em produtos digitais.",
+      ctaButton: "Vamos Conversar",
+      otherProjects: "Ver outros projetos",
+      constructionTitle: "Projeto em Construção",
+      constructionText: "O conteúdo detalhado para este projeto está sendo preparado.",
+      education: "Formação",
+      contact: "Contato",
+      skills: "Habilidades",
+      experience: "Experiência",
+      projects: "Projetos",
+      madeWith: "Feito com ❤️ e "
+    }
   },
   en: {
     name: "Christian Silva",
@@ -133,7 +160,34 @@ export const DATA = {
       "Scalable Design Systems",
       "Strategic product vision"
     ],
-    footer: "Made with ❤️ and ☕"
+    footer: "Made with ❤️ and ☕",
+    common: {
+      back: "Back to Portfolio",
+      viewPrototype: "View Prototype",
+      viewArticle: "View Article",
+      overview: "Overview",
+      objectives: "Objectives",
+      year: "Year",
+      role: "Role",
+      client: "Client",
+      tools: "Tools",
+      context: "Context",
+      focus: "Focus",
+      duration: "Duration",
+      type: "Type",
+      ctaTitle: "Liked this project?",
+      ctaText: "I am available for new challenges and collaborations on digital products.",
+      ctaButton: "Let's Talk",
+      otherProjects: "View other projects",
+      constructionTitle: "Project under Construction",
+      constructionText: "The detailed content for this project is being prepared.",
+      education: "Education",
+      contact: "Contact",
+      skills: "Skills",
+      experience: "Experience",
+      projects: "Projects",
+      madeWith: "Made with ❤️ and "
+    }
   }
 };
 

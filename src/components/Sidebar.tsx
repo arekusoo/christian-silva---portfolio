@@ -41,6 +41,8 @@ export default function Sidebar({ lang, setLang, isMenuOpen, setIsMenuOpen }: Si
                 alt={t.name}
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
+                loading="lazy"
+                decoding="async"
               />
             </motion.div>
             

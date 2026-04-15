@@ -149,6 +149,8 @@ export default function AmorDeBichoProjectPage() {
               alt="Amor de Bicho Hero"
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
+              loading="lazy"
+              decoding="async"
             />
           </motion.div>
 
@@ -514,7 +516,7 @@ export default function AmorDeBichoProjectPage() {
               </div>
               <div className="space-y-4">
                 <div className="rounded-none overflow-hidden border border-white/10">
-                  <img src="https://arekusoo.github.io/public/form.png" alt="Formulário de Teste" className="w-full h-auto" referrerPolicy="no-referrer" />
+                  <img src="https://arekusoo.github.io/public/form.png" alt="Formulário de Teste" className="w-full h-auto" referrerPolicy="no-referrer" loading="lazy" decoding="async" />
                 </div>
                 <p className="text-[10px] font-bold text-gray-500 text-center uppercase tracking-widest">Exemplo de Form</p>
               </div>
@@ -526,13 +528,13 @@ export default function AmorDeBichoProjectPage() {
                 <div className="space-y-4">
                   <h4 className="text-white font-bold flex items-center gap-2"><Layout size={18} className="text-pink-400" /> Indicativo de Seções</h4>
                   <div className="rounded-none overflow-hidden border border-white/10">
-                    <img src="https://arekusoo.github.io/public/valida.png" alt="Melhoria Seções" className="w-full h-auto" referrerPolicy="no-referrer" />
+                    <img src="https://arekusoo.github.io/public/valida.png" alt="Melhoria Seções" className="w-full h-auto" referrerPolicy="no-referrer" loading="lazy" decoding="async" />
                   </div>
                 </div>
                 <div className="space-y-4">
                   <h4 className="text-white font-bold flex items-center gap-2"><Heart size={18} className="text-pink-400" /> Feedback de Solicitação</h4>
                   <div className="rounded-none overflow-hidden border border-white/10">
-                    <img src="https://arekusoo.github.io/public/valida1.png" alt="Melhoria Feedback" className="w-full h-auto" referrerPolicy="no-referrer" />
+                    <img src="https://arekusoo.github.io/public/valida1.png" alt="Melhoria Feedback" className="w-full h-auto" referrerPolicy="no-referrer" loading="lazy" decoding="async" />
                   </div>
                 </div>
               </div>

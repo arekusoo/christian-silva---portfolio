@@ -143,6 +143,8 @@ export default function UniProjectPage() {
               alt="Uni Project Hero"
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
+              loading="lazy"
+              decoding="async"
             />
           </motion.div>
 
@@ -329,6 +331,8 @@ export default function UniProjectPage() {
                   alt="Uni Logo" 
                   className="max-w-full h-auto"
                   referrerPolicy="no-referrer"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>
@@ -378,6 +382,8 @@ export default function UniProjectPage() {
                   alt="Skins desenhadas para o personagem" 
                   className="w-full h-auto rounded-2xl"
                   referrerPolicy="no-referrer"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <p className="text-[10px] font-bold text-gray-600 uppercase tracking-widest">Gamificação & Engajamento</p>
               </div>
@@ -399,6 +405,8 @@ export default function UniProjectPage() {
                   alt="Exemplo de função Caminhar" 
                   className="w-full h-auto rounded-2xl"
                   referrerPolicy="no-referrer"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <p className="text-[10px] font-bold text-gray-600 uppercase tracking-widest">Saúde & Bem-estar</p>
               </div>
@@ -420,6 +428,8 @@ export default function UniProjectPage() {
                   alt="Interação com o usuário" 
                   className="w-full h-auto rounded-2xl"
                   referrerPolicy="no-referrer"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <p className="text-[10px] font-bold text-gray-600 uppercase tracking-widest">Comandos por Voz & Emojis</p>
               </div>

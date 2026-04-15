@@ -263,6 +263,8 @@ function Home() {
                       alt={project.title}
                       className="project-thumb transition-transform duration-700"
                       referrerPolicy="no-referrer"
+                      loading="lazy"
+                      decoding="async"
                     />
                     <div className="absolute top-4 right-4 p-3 bg-black/50 backdrop-blur-xl rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity border border-white/10">
                       <ExternalLink size={16} className="text-white" />

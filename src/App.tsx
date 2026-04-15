@@ -269,7 +269,7 @@ function Home() {
 
 export default function App() {
   return (
-    <Router>
+    <Router basename="/christian-silva---portfolio">
       <Toaster position="top-center" richColors />
       <ScrollToTop />
       <Routes>

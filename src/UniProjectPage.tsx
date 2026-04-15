@@ -145,6 +145,7 @@ export default function UniProjectPage() {
               referrerPolicy="no-referrer"
               loading="lazy"
               decoding="async"
+              fetchPriority="high"
             />
           </motion.div>
 

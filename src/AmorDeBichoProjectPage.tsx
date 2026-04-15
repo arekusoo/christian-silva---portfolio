@@ -151,6 +151,7 @@ export default function AmorDeBichoProjectPage() {
               referrerPolicy="no-referrer"
               loading="lazy"
               decoding="async"
+              fetchPriority="high"
             />
           </motion.div>
 
@@ -367,6 +368,8 @@ export default function AmorDeBichoProjectPage() {
                   alt="Requisitos do Projeto" 
                   className="w-full h-auto"
                   referrerPolicy="no-referrer"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>
@@ -376,11 +379,11 @@ export default function AmorDeBichoProjectPage() {
                 <h4 className="text-white font-bold flex items-center gap-2"><Map size={18} className="text-pink-400" /> Service Blueprint</h4>
                 <div className="space-y-4">
                   <div className="rounded-none overflow-hidden border border-white/10">
-                    <img src="https://arekusoo.github.io/public/servicebp(1).png" alt="Blueprint Adotante" className="w-full h-auto" referrerPolicy="no-referrer" />
+                    <img src="https://arekusoo.github.io/public/servicebp(1).png" alt="Blueprint Adotante" className="w-full h-auto" referrerPolicy="no-referrer" loading="lazy" decoding="async" />
                   </div>
                   <p className="text-[10px] text-gray-500 text-center uppercase">Persona: Adotante</p>
                   <div className="rounded-none overflow-hidden border border-white/10">
-                    <img src="https://arekusoo.github.io/public/servicebp(2).png" alt="Blueprint ONG" className="w-full h-auto" referrerPolicy="no-referrer" />
+                    <img src="https://arekusoo.github.io/public/servicebp(2).png" alt="Blueprint ONG" className="w-full h-auto" referrerPolicy="no-referrer" loading="lazy" decoding="async" />
                   </div>
                   <p className="text-[10px] text-gray-500 text-center uppercase">Persona: Representante ONG</p>
                 </div>
@@ -399,10 +402,10 @@ export default function AmorDeBichoProjectPage() {
                 </div>
                 <h4 className="text-white font-bold flex items-center gap-2"><Layout size={18} className="text-pink-400" /> Fluxos & Wireframes</h4>
                 <div className="rounded-none overflow-hidden border border-white/10">
-                  <img src="https://arekusoo.github.io/public/fluxos(2).png" alt="Fluxos" className="w-full h-auto" referrerPolicy="no-referrer" />
+                  <img src="https://arekusoo.github.io/public/fluxos(2).png" alt="Fluxos" className="w-full h-auto" referrerPolicy="no-referrer" loading="lazy" decoding="async" />
                 </div>
                 <div className="rounded-none overflow-hidden border border-white/10">
-                  <img src="https://arekusoo.github.io/public/wire(1).png" alt="Wireframes" className="w-full h-auto" referrerPolicy="no-referrer" />
+                  <img src="https://arekusoo.github.io/public/wire(1).png" alt="Wireframes" className="w-full h-auto" referrerPolicy="no-referrer" loading="lazy" decoding="async" />
                 </div>
               </div>
             </div>
@@ -433,7 +436,7 @@ export default function AmorDeBichoProjectPage() {
                   </div>
                 </div>
                 <div className="rounded-none overflow-hidden border border-white/10 shadow-2xl">
-                  <img src="https://arekusoo.github.io/public/ps.png" alt="Painel Semântico" className="w-full h-auto" referrerPolicy="no-referrer" />
+                  <img src="https://arekusoo.github.io/public/ps.png" alt="Painel Semântico" className="w-full h-auto" referrerPolicy="no-referrer" loading="lazy" decoding="async" />
                 </div>
               </div>
 
@@ -441,13 +444,13 @@ export default function AmorDeBichoProjectPage() {
                 <div className="space-y-4">
                   <h4 className="text-white font-bold">Branding</h4>
                   <div className="rounded-none overflow-hidden border border-white/10 bg-white/5 p-8 flex items-center justify-center">
-                    <img src="https://arekusoo.github.io/public/brandingab.png" alt="Branding" className="max-w-full h-auto" referrerPolicy="no-referrer" />
+                    <img src="https://arekusoo.github.io/public/brandingab.png" alt="Branding" className="max-w-full h-auto" referrerPolicy="no-referrer" loading="lazy" decoding="async" />
                   </div>
                 </div>
                 <div className="space-y-4">
                   <h4 className="text-white font-bold">Styleguide Components</h4>
                   <div className="rounded-none overflow-hidden border border-white/10 bg-white/5">
-                    <img src="https://arekusoo.github.io/public/style2.png" alt="Styleguide" className="w-full h-auto" referrerPolicy="no-referrer" />
+                    <img src="https://arekusoo.github.io/public/style2.png" alt="Styleguide" className="w-full h-auto" referrerPolicy="no-referrer" loading="lazy" decoding="async" />
                   </div>
                 </div>
               </div>
@@ -473,14 +476,14 @@ export default function AmorDeBichoProjectPage() {
                 </p>
               </div>
               <div className="rounded-none overflow-hidden border border-white/10 shadow-2xl">
-                <img src="https://arekusoo.github.io/public/proto1.png" alt="Protótipo Mobile" className="w-full h-auto" referrerPolicy="no-referrer" />
+                <img src="https://arekusoo.github.io/public/proto1.png" alt="Protótipo Mobile" className="w-full h-auto" referrerPolicy="no-referrer" loading="lazy" decoding="async" />
               </div>
             </div>
 
             <div className="space-y-6">
               <h3 className="text-2xl font-bold text-white">Interface Web</h3>
               <div className="rounded-none overflow-hidden border border-white/10 shadow-2xl">
-                <img src="https://arekusoo.github.io/public/proto3.png" alt="Protótipo Web" className="w-full h-auto" referrerPolicy="no-referrer" />
+                <img src="https://arekusoo.github.io/public/proto3.png" alt="Protótipo Web" className="w-full h-auto" referrerPolicy="no-referrer" loading="lazy" decoding="async" />
               </div>
             </div>
           </div>

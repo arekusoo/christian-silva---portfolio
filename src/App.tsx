@@ -120,7 +120,7 @@ function Home() {
         
         <button 
           onClick={() => setLang(l => l === 'pt' ? 'en' : 'pt')}
-          className="px-5 py-2.5 bg-white/5 border border-white/10 rounded-full text-[10px] font-bold tracking-[0.2em] text-white hover:bg-white/10 transition-all flex items-center gap-2"
+          className={`px-5 py-2.5 bg-white/5 border border-white/10 rounded-full text-[10px] font-bold tracking-[0.2em] text-white hover:bg-white/10 transition-all flex items-center gap-2 transition-opacity duration-300 ${isMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
         >
           <Globe size={14} />
           {lang === 'pt' ? 'EN' : 'PT'}
@@ -175,7 +175,7 @@ function Home() {
             href="https://wa.me/5592982043805" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="cta-button flex items-center gap-3 mx-auto lg:mx-0"
+            className="cta-button flex items-center gap-3 mx-auto lg:mx-0 w-fit"
           >
             {t.ctaButton}
             <ArrowRight size={20} />
@@ -244,7 +244,7 @@ function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             <AnimatePresence mode="popLayout">
-              {t.projects.map((project) => (
+              {t.projects.map((project, i) => (
                 <motion.div
                   key={project.id}
                   layout
@@ -265,6 +265,7 @@ function Home() {
                       referrerPolicy="no-referrer"
                       loading="lazy"
                       decoding="async"
+                      fetchPriority={i < 2 ? "high" : "auto"}
                     />
                     <div className="absolute top-4 right-4 p-3 bg-black/50 backdrop-blur-xl rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity border border-white/10">
                       <ExternalLink size={16} className="text-white" />

@@ -155,6 +155,8 @@ export default function ProjectPage() {
               src="https://arekusoo.github.io/public/banner1.png" 
               alt="Super Monitoria Hero"
               className="w-full h-full object-cover"
+              fetchPriority="high"
+              decoding="async"
             />
           </motion.div>
 
@@ -522,6 +524,8 @@ export default function ProjectPage() {
                 alt="Exemplos de fluxos: Nova conta, recuperação de senha e login" 
                 className="w-full h-auto object-cover"
                 referrerPolicy="no-referrer"
+                loading="lazy"
+                decoding="async"
               />
             </div>
 

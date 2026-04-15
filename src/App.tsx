@@ -73,8 +73,17 @@ const ScrollToTop = () => {
 function Home() {
   const [lang, setLang] = useState<Lang>('pt');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
   const t = DATA[lang];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <div className="flex flex-col lg:flex-row min-h-screen relative font-sans">
@@ -83,7 +92,7 @@ function Home() {
       <div className="bg-glow bottom-[-20%] right-[-20%] bg-blue-400/10 opacity-20" />
 
       {/* --- Mobile Header --- */}
-      <div className="lg:hidden fixed top-0 left-0 right-0 p-6 flex justify-between items-center z-[60] bg-brand-bg/80 backdrop-blur-xl border-b border-white/5">
+      <div className={`lg:hidden fixed top-0 left-0 right-0 p-6 flex justify-between items-center z-[60] transition-all duration-300 ${scrolled ? 'bg-brand-bg/90 backdrop-blur-xl border-b border-white/5' : 'bg-transparent border-b border-transparent'}`}>
         <button 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="p-2 text-white bg-white/5 rounded-full border border-white/10"

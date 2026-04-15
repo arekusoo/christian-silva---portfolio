@@ -547,9 +547,14 @@ export default function AmorDeBichoProjectPage() {
             {t.common.ctaText}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button className="w-full sm:w-auto px-8 py-4 bg-white text-black rounded-full font-bold hover:scale-105 transition-all">
+            <a 
+              href="https://wa.me/5592982043805" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="w-full sm:w-auto px-8 py-4 bg-white text-black rounded-full font-bold hover:scale-105 transition-all flex items-center justify-center"
+            >
               {t.common.ctaButton}
-            </button>
+            </a>
             <Link to="/" className="w-full sm:w-auto px-8 py-4 bg-white/5 border border-white/10 text-white rounded-full font-bold hover:bg-white/10 transition-all">
               {t.common.otherProjects}
             </Link>

@@ -171,10 +171,15 @@ function Home() {
             </div>
           </div>
 
-          <button className="cta-button flex items-center gap-3 mx-auto lg:mx-0">
+          <a 
+            href="https://wa.me/5592982043805" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="cta-button flex items-center gap-3 mx-auto lg:mx-0"
+          >
             {t.ctaButton}
             <ArrowRight size={20} />
-          </button>
+          </a>
         </motion.section>
 
         {/* Skills Chips */}
@@ -297,7 +302,20 @@ function Home() {
 export default function App() {
   return (
     <Router basename="/christian-silva---portfolio">
-      <Toaster position="top-center" richColors />
+      <Toaster 
+        position="top-center" 
+        richColors 
+        theme="dark" 
+        toastOptions={{ 
+          style: { 
+            fontFamily: '"DM Sans", sans-serif',
+            borderRadius: '1rem',
+            background: '#0f0f0f',
+            border: '1px solid rgba(255,255,255,0.1)',
+            color: '#fff'
+          } 
+        }} 
+      />
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />

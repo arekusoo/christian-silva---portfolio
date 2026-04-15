@@ -6,9 +6,7 @@ import {
   MessageCircle,
   Phone,
   AtSign,
-  Download,
-  Menu,
-  X
+  Download
 } from 'lucide-react';
 import { DATA, Lang } from '../data';
 
@@ -33,11 +31,6 @@ export default function Sidebar({ lang, setLang, isMenuOpen, setIsMenuOpen }: Si
           className={`lg:w-72 lg:fixed lg:top-6 lg:left-6 lg:bottom-6 sidebar-floating p-6 flex flex-col z-50 fixed inset-0 lg:inset-auto m-0 lg:m-0 bg-brand-bg lg:bg-white/[0.02] w-full ${isMenuOpen ? 'flex' : 'hidden lg:flex'}`}
         >
           <div className="flex flex-col items-center lg:items-start space-y-4 shrink-0">
-            <div className="w-full flex justify-end lg:hidden">
-              <button onClick={() => setIsMenuOpen(false)} className="p-2 text-gray-400">
-                <X size={24} />
-              </button>
-            </div>
             <motion.div 
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -78,7 +71,7 @@ export default function Sidebar({ lang, setLang, isMenuOpen, setIsMenuOpen }: Si
               <ul className="space-y-1.5">
                 <li>
                   <a 
-                    href={`https://wa.me/${t.contact.phone.replace(/\D/g, '')}`}
+                    href={`https://wa.me/55${t.contact.phone.replace(/\D/g, '')}`}
                     target="_blank"
                     rel="noreferrer"
                     className="flex items-center gap-2.5 px-3 py-2.5 bg-white/5 border border-white/10 rounded-xl text-[13px] text-gray-400 hover:text-white hover:bg-white/10 transition-all w-full"

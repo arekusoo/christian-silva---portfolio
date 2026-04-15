@@ -15,6 +15,7 @@ export const DATA = {
     cta: "Construindo produtos e experiências que conectam.",
     ctaButton: "Contate-me agora",
     downloadCV: "Baixar Currículo",
+    cvLink: "https://drive.google.com/file/d/1Er4wHfRixepfXT3_IMgKTVgtuVw8n3B1/view?usp=sharing",
     skills: [
       "Figma", "Prototipação", "UX Research", "Design Systems", "User Testing", "IA em Design", "Motion Design", "UX Writing", "Ilustração", "Design Gráfico", "Branding", "UI Animation"
     ],
@@ -82,6 +83,7 @@ export const DATA = {
     cta: "Building products and experiences that connect.",
     ctaButton: "Contact me now",
     downloadCV: "Download Resume",
+    cvLink: "https://drive.google.com/file/d/1fROp-usFtA_wHDt1juY-CIPSnco8MR0x/view?usp=sharing",
     skills: [
       "Figma", "Prototyping", "UX Research", "Design Systems", "User Testing", "AI in Design", "Motion Design", "UX Writing", "Illustration", "Graphic Design", "Branding", "UI Animation"
     ],

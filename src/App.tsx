@@ -5,7 +5,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import ProjectPage from './ProjectPage';
 import UniProjectPage from './UniProjectPage';
 import AmorDeBichoProjectPage from './AmorDeBichoProjectPage';
@@ -304,7 +304,7 @@ function Home() {
 
 export default function App() {
   return (
-    <Router basename="/christian-silva---portfolio">
+    <Router>
       <Toaster 
         position="top-center" 
         richColors 

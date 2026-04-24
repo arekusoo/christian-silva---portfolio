@@ -34,15 +34,18 @@ export default function Sidebar({ lang, setLang, isMenuOpen, setIsMenuOpen }: Si
             <motion.div 
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              className="relative w-20 h-20 rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+              className="relative w-20 h-20 rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-white/5 will-change-transform"
             >
               <img 
-                src="https://media.licdn.com/dms/image/v2/D4D03AQHBVSW9lJ_EwQ/profile-displayphoto-scale_400_400/B4DZmmONoAGQAk-/0/1759430375922?e=1776902400&v=beta&t=yLk9Z20HC0riUiTJc7E2en_Y9iXFo2j1ZlzQV4o2v3k" 
+                src="https://lh3.googleusercontent.com/d/108n8aBDyjxffTpgkM1csm9FnysFbY8ml" 
                 alt={t.name}
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
                 loading="lazy"
                 decoding="async"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = 'https://ui-avatars.com/api/?name=Christian+Silva&background=10b981&color=fff';
+                }}
               />
             </motion.div>
             

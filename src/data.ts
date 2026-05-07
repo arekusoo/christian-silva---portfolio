@@ -17,9 +17,21 @@ export const DATA = {
     downloadCV: "Baixar Currículo",
     cvLink: "https://drive.google.com/file/d/1Er4wHfRixepfXT3_IMgKTVgtuVw8n3B1/view?usp=sharing",
     skills: [
+      "UX Metrics", "Prompt Engineering", "Vibe Coding", "HTML & CSS", "Adobe XD", "Lovable", "Base44", "Usability Testing",
       "Figma", "Prototipação", "UX Research", "Design Systems", "User Testing", "IA em Design", "Motion Design", "UX Writing", "Ilustração", "Design Gráfico", "Branding", "UI Animation"
     ],
     experience: [
+      {
+        company: "Grupo de Pesquisa USES",
+        role: "Pesquisador Científico",
+        period: "1 ano e 2 meses - até o momento",
+        bullets: [
+          "Desenvolvo testes e experimentos na área de interação humano-computador utilizando a ciência como base.",
+          "Realizo pesquisas quantitativas e qualitativas (entrevistas, surveys e demais técnicas de coleta de dados) para resolver problemas.",
+          "Gerencio o time de redes sociais do grupo e delego atividades para manter o engajamento da página.",
+          "Dou palestras e compartilho experiências com a aplicação de técnicas e ferramentas de pesquisa voltada para a experiência do usuário e levantamento de requisitos."
+        ]
+      },
       {
         company: "Xmobots",
         role: "Designer UI/UX",
@@ -32,7 +44,7 @@ export const DATA = {
         ]
       },
       {
-        company: "Positivo",
+        company: "Positivo Educacional",
         role: "Designer UI/UX",
         period: "1 ano e 4 meses",
         bullets: [
@@ -55,15 +67,18 @@ export const DATA = {
       }
     ],
     projects: [
-      { id: 1, title: "Super Monitoria", category: "UX/UI", description: "Plataforma para encontrar e oferecer monitoria", tags: ["Web", "Educação"], thumb: "https://arekusoo.github.io/public/banner1.png" },
-      { id: 2, title: "Uni", category: "Mobile", description: "Assistente para adolescentes com TDM", tags: ["Mobile", "Saúde"], thumb: "https://arekusoo.github.io/public/banner3.png" },
-      { id: 3, title: "Amor de Bicho", category: "Web", description: "Portal para adotar animais abandonados", tags: ["Web", "Social"], thumb: "https://arekusoo.github.io/public/banner2.png" }
+      { id: 4, slug: "lvgi", title: "LVGI", category: "UX/UI", description: "Plugin de IA para Inspeção Inclusiva no Figma", tags: ["Plugin", "IA", "Acessibilidade"], thumb: "https://lh3.googleusercontent.com/d/10TCOFc8MzCv0CXj_7fHDXx7NAm_s3Qwt" },
+      { id: 5, slug: "email-builder", title: "E-mail builder para grupo de pesquisa", category: "IA / Dev", description: "Gerador de newsletters acadêmicas otimizadas por IA", tags: ["AI Studio", "Gemini", "Vercel"], thumb: "https://lh3.googleusercontent.com/d/1G8WIbR42NVBhCQOxcaWpLMxeV6XcF5I0" },
+      { id: 1, slug: "super-monitoria", title: "Super Monitoria", category: "UX/UI", description: "Plataforma para encontrar e oferecer monitoria", tags: ["Web", "Educação"], thumb: "https://arekusoo.github.io/public/banner1.png" },
+      { id: 2, slug: "uni", title: "Uni", category: "Mobile", description: "Assistente para adolescentes com TDM", tags: ["Mobile", "Saúde"], thumb: "https://arekusoo.github.io/public/banner3.png" },
+      { id: 3, slug: "amor-de-bicho", title: "Amor de Bicho", category: "Web", description: "Portal para adotar animais abandonados", tags: ["Web", "Social"], thumb: "https://arekusoo.github.io/public/banner2.png" }
     ],
     differentials: [
       "Pesquisa com usuários e testes reais",
       "Mestrado focado em IA e Inclusão",
       "Design Systems escaláveis",
-      "Visão estratégica de produto"
+      "Visão estratégica de produto",
+      "Criação de produtos em tempo hábil com vibe coding"
     ],
     footer: "Feito com ❤️ e ☕",
     common: {
@@ -112,9 +127,21 @@ export const DATA = {
     downloadCV: "Download Resume",
     cvLink: "https://drive.google.com/file/d/1fROp-usFtA_wHDt1juY-CIPSnco8MR0x/view?usp=sharing",
     skills: [
+      "UX Metrics", "Prompt Engineering", "Vibe Coding", "HTML & CSS", "Adobe XD", "Lovable", "Base44", "Usability Testing",
       "Figma", "Prototyping", "UX Research", "Design Systems", "User Testing", "AI in Design", "Motion Design", "UX Writing", "Illustration", "Graphic Design", "Branding", "UI Animation"
     ],
     experience: [
+      {
+        company: "USES Research Group",
+        role: "Scientific Researcher",
+        period: "1 year and 2 months - present",
+        bullets: [
+          "Develop tests and experiments in the field of human-computer interaction using science as a basis.",
+          "Perform quantitative and qualitative research (interviews, surveys, and other data collection techniques) to solve problems.",
+          "Manage the group's social media team and delegate activities to maintain page engagement.",
+          "Give lectures and share experiences with the application of research techniques and tools focused on user experience and requirements gathering."
+        ]
+      },
       {
         company: "Xmobots",
         role: "UI/UX Designer",
@@ -127,7 +154,7 @@ export const DATA = {
         ]
       },
       {
-        company: "Positivo",
+        company: "Positivo Educacional",
         role: "UI/UX Designer",
         period: "1 year and 4 months",
         bullets: [
@@ -150,15 +177,18 @@ export const DATA = {
       }
     ],
     projects: [
-      { id: 1, title: "Super Monitoria", category: "UX/UI", description: "Platform to find and offer tutoring", tags: ["Web", "Education"], thumb: "https://arekusoo.github.io/public/banner1.png" },
-      { id: 2, title: "Uni", category: "Mobile", description: "Assistant for teenagers with MDD", tags: ["Mobile", "Health"], thumb: "https://arekusoo.github.io/public/banner3.png" },
-      { id: 3, title: "Amor de Bicho", category: "Web", description: "Portal for adopting abandoned animals", tags: ["Web", "Social"], thumb: "https://arekusoo.github.io/public/banner2.png" }
+      { id: 4, slug: "lvgi", title: "LVGI", category: "UX/UI", description: "AI Plugin for Inclusive Inspection in Figma", tags: ["Plugin", "AI", "Accessibility"], thumb: "https://lh3.googleusercontent.com/d/16uk9hGHISiGcxRrAqCuvIj8PcayqzX9s" },
+      { id: 5, slug: "email-builder", title: "Email builder for research group", category: "AI / Dev", description: "AI-optimized academic newsletter generator", tags: ["AI Studio", "Gemini", "Vercel"], thumb: "https://lh3.googleusercontent.com/d/1G8WIbR42NVBhCQOxcaWpLMxeV6XcF5I0" },
+      { id: 1, slug: "super-monitoria", title: "Super Monitoria", category: "UX/UI", description: "Platform to find and offer tutoring", tags: ["Web", "Education"], thumb: "https://arekusoo.github.io/public/banner1.png" },
+      { id: 2, slug: "uni", title: "Uni", category: "Mobile", description: "Assistant for teenagers with MDD", tags: ["Mobile", "Health"], thumb: "https://arekusoo.github.io/public/banner3.png" },
+      { id: 3, slug: "amor-de-bicho", title: "Amor de Bicho", category: "Web", description: "Portal for adopting abandoned animals", tags: ["Web", "Social"], thumb: "https://arekusoo.github.io/public/banner2.png" }
     ],
     differentials: [
       "User research and real testing",
       "Master's focused on AI and Inclusion",
       "Scalable Design Systems",
-      "Strategic product vision"
+      "Strategic product vision",
+      "Fast-paced product creation with vibe coding"
     ],
     footer: "Made with ❤️ and ☕",
     common: {

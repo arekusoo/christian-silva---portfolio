@@ -9,6 +9,8 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import ProjectPage from './ProjectPage';
 import UniProjectPage from './UniProjectPage';
 import AmorDeBichoProjectPage from './AmorDeBichoProjectPage';
+import LVGIProjectPage from './LVGIProjectPage';
+import EmailBuilderProjectPage from './EmailBuilderProjectPage';
 import { DATA, Lang } from './data';
 import { 
   Mail, 
@@ -253,8 +255,7 @@ function Home() {
                   exit={{ scale: 0.9, opacity: 0 }}
                   className="organic-card p-5 group cursor-pointer"
                   onClick={() => {
-                    const slug = project.title.toLowerCase().replace(/\s+/g, '-');
-                    navigate(`/project/${slug}`);
+                    navigate(`/project/${project.slug}`);
                   }}
                 >
                   <div className="relative overflow-hidden rounded-[1.5rem]">
@@ -324,6 +325,8 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/project/uni" element={<UniProjectPage />} />
         <Route path="/project/amor-de-bicho" element={<AmorDeBichoProjectPage />} />
+        <Route path="/project/lvgi" element={<LVGIProjectPage />} />
+        <Route path="/project/email-builder" element={<EmailBuilderProjectPage />} />
         <Route path="/project/:id" element={<ProjectPage />} />
       </Routes>
     </Router>

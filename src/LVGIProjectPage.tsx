@@ -136,7 +136,7 @@ export default function LVGIProjectPage() {
       />
 
       {/* --- Main Content --- */}
-      <main className="flex-1 lg:ml-[24rem] p-8 lg:p-16 space-y-24 pt-32 lg:pt-16 max-w-5xl mx-auto">
+      <main className="flex-1 w-full lg:ml-[24rem] p-6 sm:p-8 lg:p-16 space-y-16 lg:space-y-24 pt-32 lg:pt-16 max-w-5xl mx-auto overflow-x-hidden">
         
         {/* --- Navigation & Header --- */}
         <nav className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
@@ -170,7 +170,7 @@ export default function LVGIProjectPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-5xl lg:text-7xl font-bold text-white tracking-tight"
+              className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white tracking-tight"
             >
               LVGI
             </motion.h1>
@@ -198,7 +198,7 @@ export default function LVGIProjectPage() {
             />
           </motion.button>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 py-8 border-y border-white/5">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 py-8 border-y border-white/5">
             <div>
               <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">{t.common.year}</p>
               <p className="text-white font-medium">2024</p>
@@ -258,7 +258,7 @@ export default function LVGIProjectPage() {
                 : "The project structure was based on Jesse James Garrett's framework, ensuring that the final interface was the reflection of solid strategic decisions."}
             </p>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4">
             {[
               { title: lang === 'pt' ? 'Estratégia' : 'Strategy', icon: <Target size={24} /> },
               { title: lang === 'pt' ? 'Escopo' : 'Scope', icon: <Zap size={24} /> },
@@ -266,12 +266,12 @@ export default function LVGIProjectPage() {
               { title: lang === 'pt' ? 'Esqueleto' : 'Skeleton', icon: <Layout size={24} /> },
               { title: lang === 'pt' ? 'Superfície' : 'Surface', icon: <Palette size={24} /> },
             ].map((item, i) => (
-              <div key={i} className="organic-card p-6 text-center space-y-4">
+              <div key={i} className="organic-card p-4 sm:p-6 text-center space-y-4 overflow-hidden">
                 <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 mx-auto">
                   {item.icon}
                 </div>
                 <div>
-                  <p className="text-white font-bold text-xs uppercase tracking-widest">{item.title}</p>
+                  <p className="text-white font-bold text-[10px] sm:text-xs uppercase tracking-widest">{item.title}</p>
                 </div>
               </div>
             ))}
@@ -286,7 +286,7 @@ export default function LVGIProjectPage() {
             </div>
             <h2 className="text-3xl font-bold text-white">1. {lang === 'pt' ? 'Plano da Estratégia' : 'Strategy Plane'}</h2>
           </div>
-          <div className="organic-card p-8 space-y-6">
+          <div className="organic-card p-6 sm:p-8 lg:p-10 space-y-6">
             <p className="text-gray-400 leading-relaxed">
               {lang === 'pt' 
                 ? "Nesta fase, cruzamos as necessidades do usuário (designers) com os objetivos do produto. O foco foi identificar como facilitar a interpretação das facetas cognitivas sem exigir um especialista acadêmico."
@@ -320,7 +320,7 @@ export default function LVGIProjectPage() {
             </div>
             <h2 className="text-3xl font-bold text-white">2. {lang === 'pt' ? 'Plano do Escopo' : 'Scope Plane'}</h2>
           </div>
-          <div className="organic-card p-8 space-y-6">
+          <div className="organic-card p-6 sm:p-8 lg:p-10 space-y-6">
             <p className="text-gray-400 leading-relaxed">
               {lang === 'pt' 
                 ? "Traduzimos as necessidades em funcionalidades concretas utilizando a Matriz MoSCoW para priorização, garantindo que o MVP fosse funcional e focado."
@@ -351,14 +351,14 @@ export default function LVGIProjectPage() {
             </div>
             <h2 className="text-3xl font-bold text-white">3. {lang === 'pt' ? 'Plano da Estrutura' : 'Structure Plane'}</h2>
           </div>
-          <div className="organic-card p-8 space-y-6">
+          <div className="organic-card p-6 sm:p-8 lg:p-10 space-y-6 overflow-hidden">
             <p className="text-gray-400 leading-relaxed text-center">
               {lang === 'pt' 
                 ? "Definimos o fluxo lógico para que a inspeção fosse sequencial e intuitiva, conectando achados diretamente às facetas cognitivas."
                 : "We defined the logical flow for the inspection to be sequential and intuitive, connecting findings directly to cognitive facets."}
             </p>
-            <div className="bg-brand-bg rounded-3xl p-8 border border-white/5 overflow-x-auto">
-              <div className="min-w-[600px] flex items-center justify-between gap-4">
+            <div className="bg-brand-bg rounded-3xl p-4 sm:p-8 border border-white/5 overflow-x-auto max-w-full">
+              <div className="min-w-[450px] flex items-center justify-between gap-3 sm:gap-4 px-2">
                 {[
                   { label: lang === 'pt' ? 'Acesso' : 'Access', sub: 'Plugin' },
                   { label: lang === 'pt' ? 'Persona' : 'Persona', sub: 'Select' },
@@ -366,12 +366,12 @@ export default function LVGIProjectPage() {
                   { label: lang === 'pt' ? 'IA' : 'AI', sub: 'Analysis' },
                   { label: lang === 'pt' ? 'Relatório' : 'Report', sub: 'Result' }
                 ].map((step, i, arr) => (
-                  <div key={i} className="flex items-center gap-4 flex-1">
-                    <div className="flex-1 p-4 bg-white/5 rounded-2xl border border-white/10 text-center">
-                      <p className="text-white font-bold text-xs uppercase">{step.label}</p>
-                      <p className="text-gray-500 text-[10px] uppercase tracking-tighter">{step.sub}</p>
+                  <div key={i} className="flex items-center gap-2 sm:gap-4 flex-1">
+                    <div className="flex-1 p-3 sm:p-4 bg-white/5 rounded-2xl border border-white/10 text-center">
+                      <p className="text-white font-bold text-[10px] uppercase">{step.label}</p>
+                      <p className="text-gray-500 text-[8px] sm:text-[10px] uppercase tracking-tighter">{step.sub}</p>
                     </div>
-                    {i < arr.length - 1 && <span className="text-gray-700">→</span>}
+                    {i < arr.length - 1 && <span className="text-gray-700 text-xs sm:text-base">→</span>}
                   </div>
                 ))}
               </div>
@@ -406,13 +406,13 @@ export default function LVGIProjectPage() {
             </div>
             <h2 className="text-3xl font-bold text-white">4. {lang === 'pt' ? 'Plano do Esqueleto' : 'Skeleton Plane'}</h2>
           </div>
-          <div className="organic-card p-8 space-y-6 text-center">
+          <div className="organic-card p-6 sm:p-8 lg:p-10 space-y-6 text-center overflow-hidden">
             <p className="leading-relaxed">
               {lang === 'pt' 
                 ? "Aqui, a estrutura ganhou forma através de wireframes de baixa e média fidelidade. O foco principal foi garantir que a área de upload e a área de resultados não gerassem sobrecarga visual."
                 : "Here, the structure took shape through low and mid-fidelity wireframes. The main focus was to ensure that the upload area and results area did not generate visual overload."}
             </p>
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
               <div className="space-y-4">
                 <button 
                   onClick={() => setFullScreenImage(images.wireframe1)}
@@ -448,8 +448,8 @@ export default function LVGIProjectPage() {
             </div>
             <h2 className="text-3xl font-bold text-white">5. {lang === 'pt' ? 'Plano da Superfície' : 'Surface Plane'}</h2>
           </div>
-          <div className="flex flex-col gap-12">
-            <div className="organic-card p-8 space-y-6">
+          <div className="flex flex-col gap-8 lg:gap-12">
+            <div className="organic-card p-6 sm:p-8 lg:p-10 space-y-6 overflow-hidden">
               <h4 className="text-white font-bold flex items-center gap-2 text-xl tracking-tight leading-none">
                 <Palette size={24} className="text-indigo-400" /> 
                 {lang === 'pt' ? 'Painel semântico' : 'Semantic Board'}
@@ -470,7 +470,7 @@ export default function LVGIProjectPage() {
               </button>
             </div>
 
-            <div className="organic-card p-8 space-y-6">
+            <div className="organic-card p-6 sm:p-8 lg:p-10 space-y-6 overflow-hidden">
               <h4 className="text-white font-bold flex items-center gap-2 text-xl tracking-tight leading-none">
                 <Zap size={24} className="text-indigo-400" /> 
                 {lang === 'pt' ? 'Cromatismo' : 'Chromatism'}
@@ -491,7 +491,7 @@ export default function LVGIProjectPage() {
               </button>
             </div>
 
-            <div className="organic-card p-8 space-y-6">
+            <div className="organic-card p-6 sm:p-8 lg:p-10 space-y-6 overflow-hidden">
               <h4 className="text-white font-bold text-xl flex items-center gap-2">
                 <Users size={24} className="text-indigo-400" />
                 {lang === 'pt' ? 'Personagens e empatia' : 'Characters and empathy'}
@@ -512,7 +512,7 @@ export default function LVGIProjectPage() {
               </button>
             </div>
 
-            <div className="organic-card p-8 space-y-6">
+            <div className="organic-card p-6 sm:p-8 lg:p-10 space-y-6 overflow-hidden">
               <h4 className="text-white font-bold text-xl flex items-center gap-2 underline decoration-indigo-500/30 underline-offset-8">
                 UI Kit
               </h4>
@@ -532,7 +532,7 @@ export default function LVGIProjectPage() {
               </button>
             </div>
 
-            <div className="organic-card p-8 space-y-6">
+            <div className="organic-card p-6 sm:p-8 lg:p-10 space-y-6 overflow-hidden">
               <h4 className="text-white font-bold text-xl flex items-center gap-2 underline decoration-indigo-500/30 underline-offset-8">
                 {lang === 'pt' ? 'Telas finais' : 'Final Screens'}
               </h4>
@@ -565,7 +565,7 @@ export default function LVGIProjectPage() {
              </p>
              
              <div className="space-y-4 pt-12">
-               <div className="aspect-video w-full rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl">
+               <div className="aspect-video w-full rounded-2xl sm:rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl">
                  <iframe 
                    className="w-full h-full"
                    src="https://www.youtube.com/embed/Qqzj6p88KOA" 

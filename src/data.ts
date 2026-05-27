@@ -18,7 +18,7 @@ export const DATA = {
     cvLink: "https://drive.google.com/file/d/1Er4wHfRixepfXT3_IMgKTVgtuVw8n3B1/view?usp=sharing",
     skills: [
       "UX Metrics", "Prompt Engineering", "Vibe Coding", "HTML & CSS", "Adobe XD", "Lovable", "Base44", "Usability Testing",
-      "Figma", "Prototipação", "UX Research", "Design Systems", "User Testing", "IA em Design", "Motion Design", "UX Writing", "Ilustração", "Design Gráfico", "Branding", "UI Animation"
+      "Claude Code + Figma", "Prototipação", "UX Research", "Design Systems", "User Testing", "IA em Design", "Motion Design", "UX Writing", "Ilustração", "Design Gráfico", "Branding", "UI Animation"
     ],
     experience: [
       {
@@ -128,7 +128,7 @@ export const DATA = {
     cvLink: "https://drive.google.com/file/d/1fROp-usFtA_wHDt1juY-CIPSnco8MR0x/view?usp=sharing",
     skills: [
       "UX Metrics", "Prompt Engineering", "Vibe Coding", "HTML & CSS", "Adobe XD", "Lovable", "Base44", "Usability Testing",
-      "Figma", "Prototyping", "UX Research", "Design Systems", "User Testing", "AI in Design", "Motion Design", "UX Writing", "Illustration", "Graphic Design", "Branding", "UI Animation"
+      "Claude Code + Figma", "Prototyping", "UX Research", "Design Systems", "User Testing", "AI in Design", "Motion Design", "UX Writing", "Illustration", "Graphic Design", "Branding", "UI Animation"
     ],
     experience: [
       {

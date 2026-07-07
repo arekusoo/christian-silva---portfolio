@@ -30,6 +30,7 @@ import {
 } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
+import OtherProjectsSidebar from './components/OtherProjectsSidebar';
 import { DATA, Lang } from './data';
 
 export default function LVGIProjectPage() {
@@ -136,7 +137,8 @@ export default function LVGIProjectPage() {
       />
 
       {/* --- Main Content --- */}
-      <main className="flex-1 w-full lg:ml-[24rem] p-6 sm:p-8 lg:p-16 space-y-16 lg:space-y-24 pt-32 lg:pt-16 max-w-5xl mx-auto overflow-x-hidden">
+      <main className="flex-1 w-full lg:ml-[24rem] fhd:mr-[24rem] p-6 sm:p-8 lg:p-16 pt-32 lg:pt-16 max-w-7xl mx-auto overflow-x-hidden">
+        <div className="space-y-16 lg:space-y-24">
         
         {/* --- Navigation & Header --- */}
         <nav className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
@@ -221,7 +223,7 @@ export default function LVGIProjectPage() {
         {/* --- Overview --- */}
         <section className="grid lg:grid-cols-3 gap-12 text-gray-400">
           <div className="lg:col-span-2 space-y-6">
-            <h2 className="text-3xl font-bold text-white uppercase tracking-tight">01. {lang === 'pt' ? 'Visão Geral' : 'Overview'}</h2>
+            <h2 className="text-3xl font-bold text-white tracking-tight">{lang === 'pt' ? 'Visão geral' : 'Overview'}</h2>
             <p className="leading-relaxed text-lg">
               {lang === 'pt' 
                 ? "Decisões de interface criam barreiras invisíveis. No desenvolvimento ágil, métodos analíticos como o GenderMag (que identifica vieses de gênero baseados em estilos cognitivos) são frequentemente abandonados por serem manuais, lentos e dependerem de especialistas."
@@ -576,7 +578,7 @@ export default function LVGIProjectPage() {
                    allowFullScreen
                  ></iframe>
                </div>
-               <p className="text-gray-500 text-xs font-medium uppercase tracking-widest">{lang === 'pt' ? 'Demonstração do Sistema' : 'System Demonstration'}</p>
+               <p className="text-gray-500 text-xs font-medium tracking-widest">{lang === 'pt' ? 'Demonstração sobre facetas do método' : 'Methodology facets demonstration'}</p>
              </div>
           </div>
         </section>
@@ -601,7 +603,10 @@ export default function LVGIProjectPage() {
             </Link>
           </div>
         </footer>
+        </div>
 
+        {/* --- Right Column: Other Projects --- */}
+        <OtherProjectsSidebar currentSlug="lvgi" lang={lang} />
       </main>
     </div>
   );

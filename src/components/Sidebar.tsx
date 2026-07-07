@@ -37,7 +37,7 @@ export default function Sidebar({ lang, setLang, isMenuOpen, setIsMenuOpen }: Si
               className="relative w-20 h-20 rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-white/5 will-change-transform"
             >
               <img 
-                src="https://lh3.googleusercontent.com/d/15fTjhk1Mm-0jQGG39WlgC63EM1jj4lRh" 
+                src="https://media.licdn.com/dms/image/v2/D4D03AQHBVSW9lJ_EwQ/profile-displayphoto-scale_100_100/B4DZmmONoAGQAg-/0/1759430375922?e=1784764800&v=beta&t=CcBUli_3_a87Bq5RaS0a43KUULkSKUVKoKxKq8b2hfg" 
                 alt={t.name}
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"

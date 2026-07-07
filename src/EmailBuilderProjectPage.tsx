@@ -29,6 +29,7 @@ import {
 } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
+import OtherProjectsSidebar from './components/OtherProjectsSidebar';
 import { DATA, Lang } from './data';
 
 export default function EmailBuilderProjectPage() {
@@ -100,7 +101,8 @@ export default function EmailBuilderProjectPage() {
       />
 
       {/* --- Main Content --- */}
-      <main className="flex-1 lg:ml-[24rem] p-8 lg:p-16 space-y-24 pt-32 lg:pt-16 max-w-5xl mx-auto">
+      <main className="flex-1 lg:ml-[24rem] fhd:mr-[24rem] p-8 lg:p-16 pt-32 lg:pt-16 max-w-7xl mx-auto">
+        <div className="space-y-24">
         
         {/* --- Navigation & Header --- */}
         <nav className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
@@ -349,7 +351,10 @@ export default function EmailBuilderProjectPage() {
             </Link>
           </div>
         </footer>
+        </div>
 
+        {/* --- Right Column: Other Projects --- */}
+        <OtherProjectsSidebar currentSlug="email-builder" lang={lang} />
       </main>
     </div>
   );

@@ -18,7 +18,7 @@ import {
 } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
-import OtherProjectsSidebar from './components/OtherProjectsSidebar';
+import SeeAlsoProjects from './components/SeeAlsoProjects';
 import { DATA, Lang } from './data';
 
 import { toast } from 'sonner';
@@ -108,8 +108,9 @@ export default function ProjectPage() {
       />
 
       {/* --- Main Content --- */}
-      <main className="flex-1 lg:ml-[24rem] fhd:mr-[24rem] p-8 lg:p-16 pt-32 lg:pt-16 max-w-7xl mx-auto">
-        <div className="space-y-24">
+      <main className="flex-1 w-full lg:ml-[24rem] p-6 sm:p-8 lg:p-12 xl:p-16 pt-32 lg:pt-16 max-w-[1400px] mx-auto overflow-x-hidden">
+        <div className="flex flex-col xl:flex-row gap-12 xl:gap-16 items-start w-full">
+          <div className="flex-1 min-w-0 space-y-16 lg:space-y-24 w-full">
         
         {/* --- Navigation & Header --- */}
         <nav className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
@@ -639,10 +640,12 @@ export default function ProjectPage() {
             </Link>
           </div>
         </footer>
-        </div>
+          </div>
 
-        {/* --- Right Column: Other Projects --- */}
-        <OtherProjectsSidebar currentSlug={id || "super-monitoria"} lang={lang} />
+          <aside className="w-full xl:w-[22rem] 2xl:w-[24rem] shrink-0 xl:sticky xl:top-12">
+            <SeeAlsoProjects currentSlug="super-monitoria" lang={lang} />
+          </aside>
+        </div>
       </main>
 
       {/* --- Error Modal --- */}

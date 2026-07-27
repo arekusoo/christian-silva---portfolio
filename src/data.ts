@@ -8,9 +8,9 @@ export const DATA = {
       linkedin: "linkedin.com/in/arekuso"
     },
     education: [
-      "Mestrando em Design - Interfaces Digitais e IA",
-      "Pós-graduação em Produtos Digitais (UX/UI)",
-      "Bacharelado em Design - Interfaces Digitais"
+      "Mestre em Design com o tema em Interfaces Digitais e IA pela UFAM (2026)",
+      "Pós-graduado em Design - Produtos Digitais (UX/UI) pela Faculdade Anhanguera (2021)",
+      "Bacharel em Design Interfaces Digitais pela Faculdade FUCAPI (2018)"
     ],
     cta: "Construindo produtos e experiências que conectam.",
     ctaButton: "Contate-me agora",
@@ -106,6 +106,7 @@ export const DATA = {
       skills: "Habilidades",
       experience: "Experiência",
       projects: "Projetos",
+      seeAlso: "Veja também",
       madeWith: "Feito com ❤️ e "
     }
   },
@@ -118,9 +119,9 @@ export const DATA = {
       linkedin: "linkedin.com/in/arekuso"
     },
     education: [
-      "Master's Student in Design - Digital Interfaces and AI",
-      "Post-grad in Digital Products (UX/UI)",
-      "Bachelor's in Design - Digital Interfaces"
+      "Master's in Design focused on Digital Interfaces and AI - UFAM (2026)",
+      "Postgraduate in Design - Digital Products (UX/UI) - Anhanguera (2021)",
+      "Bachelor in Design - Digital Interfaces - FUCAPI (2018)"
     ],
     cta: "Building products and experiences that connect.",
     ctaButton: "Contact me now",
@@ -216,6 +217,7 @@ export const DATA = {
       skills: "Skills",
       experience: "Experience",
       projects: "Projects",
+      seeAlso: "See also",
       madeWith: "Made with ❤️ and "
     }
   }
